@@ -15,7 +15,7 @@ i=0;
 while i<n
     i = i+1;
     z(i,1) = str2sym(strcat('x',string(i),'(t)'));
-    z(i,2) = input (strcat('x',string(i),' = '));
+    z(i,2) = input (strcat('x',string(i),' =  '));
     if strfind(string(z(i,2)), 'u') > 0
         z(i,3) = 1;
     end

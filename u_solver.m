@@ -1,11 +1,6 @@
 clear all;
 syms a aa e y p b T xx x1(t) x2(t) u;
 syms vm ks m d g rm ly T xx u x1(t) x2(t) x3(t) p
-% f1 = -vm*x1/(ks + x1)*x2 + m*x2 + d*x3 + (1 - g)*x3*rm.*(1-exp(T)^(-ly*x2)) + u; %нутриенты
-% f2 = vm*x1/(ks + x1)*x2 -  m*x2 - x3*rm*(1-exp(T)^(-ly*x2)) ; %фитоплантон 
-% f3 = rm*g*x3*(1-exp(T)^(-ly*x2)) - d*x3; %зоопланктон 
-% f1 = a*x1 - (x1*x2)/(1 + aa*x1) - e*x1^2 + u;
-% f2 = -y*x2 + x1*x2/(1 + aa*x1) - b*x2^2;
 
 n = input ('колво уравнений в системе ');
 

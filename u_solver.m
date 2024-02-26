@@ -1,6 +1,12 @@
 clear all;
-syms a aa e y p b T xx x1(t) x2(t) u;
-syms vm ks m d g rm ly T xx u x1(t) x2(t) x3(t) p
+
+str = input('введите символы: ','s');
+C = strsplit(str);
+i=0;
+while i<size(C,2)
+    i = i+1;
+    syms(C(i));
+end
 
 n = input ('колво уравнений в системе ');
 
@@ -10,7 +16,7 @@ i=0;
 while i<n
     i = i+1;
     z(i,1) = str2sym(strcat('x',string(i),'(t)'));
-    z(i,2) = input (strcat('x',string(i),' =  '));
+    z(i,2) = input (strcat('x',string(i),' = '));
     if strfind(string(z(i,2)), 'u') > 0
         z(i,3) = 1;
     end
@@ -43,12 +49,14 @@ if k > 0
     EL = simplify(T*sol + psi);
     pretty(solve(EL,u))
 else 
+    display ('swdefrgthj');
     syms fi(t) T1 T2;
     i=0;
     psi_1 = psi-psi;
     while i<n
         i = i+1;
         if strfind(string(psi), string(z(i,1))) > 0 
+%            psi_1 = psi_1 - subs(fi, t, z(i,1));
             psi_1 = psi_1 - fi;
             x_fi = z(i,1);
         end
@@ -69,3 +77,6 @@ else
     diff_fi = subs(fi*diff(x_fi), old, new);
     pretty(diff_fi)
 end
+
+%fi
+%sym

@@ -1,5 +1,7 @@
 clear all;
 
+syms T;
+
 str = input('введите символы: ','s');
 C = strsplit(str);
 i=0;
@@ -43,14 +45,14 @@ while i<n
     old(i) = diff(z(i,1));
     new(i) = z(i,2);
 end
-    
+
+syms T;
 if k > 0 
     sol = subs(diff(psi), old, new);
     EL = simplify(T*sol + psi);
     pretty(solve(EL,u))
 else 
-    display ('swdefrgthj');
-    syms fi(t) T1 T2;
+    syms fi T1 T2;
     i=0;
     psi_1 = psi-psi;
     while i<n
@@ -67,16 +69,20 @@ else
     end    
     sol_1 = subs(diff(psi_1), old, new);
     EL_1 = simplify(T1*sol_1 + psi_1);
+    disp('-------------------->');
+    disp('u = ');
     pretty(solve(EL_1,u))
     sol_2 = subs(diff(psi), old, new);
     sol_3 = subs(sol_2, x_u, fi);
-    EL_2 = simplify(T2*sol_3 + psi);
-    
-    solve(EL_2,fi)
+    EL_2 = (T2*sol_3 + psi);
+    fii = solve(EL_2,fi,'ReturnConditions',true);
+    disp('-------------------->');
+    disp('fi = '); pretty(fii.fi)
     
     diff_fi = subs(fi*diff(x_fi), old, new);
+    disp('-------------------->');
+    disp('diff_fi = ');
     pretty(diff_fi)
 end
 
-%fi
-%sym
+
